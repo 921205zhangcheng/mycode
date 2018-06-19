@@ -1,0 +1,6 @@
+2018-03-23 12:20:57 [org.apache.commons.httpclient.HttpMethodDirector]-[INFO] I/O exception (java.net.ConnectException) caught when processing request: Connection timed out: connect
+2018-03-23 12:20:57 [org.apache.commons.httpclient.HttpMethodDirector]-[INFO] Retrying request
+2018-03-23 12:21:18 [org.apache.commons.httpclient.HttpMethodDirector]-[INFO] I/O exception (java.net.ConnectException) caught when processing request: Connection timed out: connect
+2018-03-23 12:21:18 [org.apache.commons.httpclient.HttpMethodDirector]-[INFO] Retrying request
+2018-03-23 12:21:39 [org.apache.commons.httpclient.HttpMethodDirector]-[INFO] I/O exception (java.net.ConnectException) caught when processing request: Connection timed out: connect
+2018-03-23 12:21:39 [org.apache.commons.httpclient.HttpMethodDirector]-[INFO] Retrying request

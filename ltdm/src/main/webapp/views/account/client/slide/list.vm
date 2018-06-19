@@ -1,0 +1,74 @@
+	  
+  
+
+		
+        
+            	<div class="panel panel-default">
+                <div class="panel-heading">轮播项列表</div>                	
+                  <div class="panel-body">
+                <table class="table table-bordered">
+					
+                	  <tr>
+                		<td>ID</td>
+                		<td>类型</td>                		
+                		<td>文字内容</td>
+                		<td>图游链接</td>  
+						<td>操作</td> 
+                     </tr>
+					 
+                        	#foreach($item in $!{context.list})
+                        		 <tr>
+                        			<td>$!{item.id}</td>
+									
+                        			<td>
+										#if($!{item.type}==1)
+											图片
+											#else
+												文字
+												#end
+										
+									</td>
+									
+                        			<td>
+                						
+                					$!{item.content}
+                						
+                					</td>
+									<td>		#if($!{item.type}==1)
+												
+												游戏：<a href="$!{item.refUrl}" target="view_window">$!{item.refUrl}</a>
+												<br>
+												图片：<a href="$!{item.refUrl}" target="view_window">$!{item.imgUrl}</a>
+												#end
+											
+                						
+                					</td>
+                					
+                					<td>             						
+                						<div class="btn-group" role="group" aria-label="...">
+                                          <a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/client/slide/update?pageIndex=')}$!{context.pageIndex}&id=$!{item.id}" class="btn btn-xs btn-success">修改</a>
+                						  &nbsp;&nbsp;
+                                          <a type="button" onclick="javascript:ws.delback(this,'')" link="$!{urlTools.tr('/client/slide/delete?pageIndex=')}$!{context.pageIndex}&id=$!{item.id}" class="btn btn-xs btn-danger">删除 </a>                             
+                                        </div>
+                						
+                					</td>
+                                    
+                                 </tr>
+                        	#end
+                    </table>
+                		<div id="pageNav">
+                				<div class=" pull-left pagination">
+                					<a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/client/slide/create')}" class="btn btn-sm btn-primary">新建轮播项</a>
+                				</div>
+                				
+                				#parse("/layout/pagenav.vm")
+								
+                           </div>
+                		   
+					</div>
+                </div>
+                		   
+			   
+			   
+ 
+

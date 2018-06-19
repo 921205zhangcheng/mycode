@@ -1,0 +1,123 @@
+
+ <script >
+ function initTag(){
+		url = "$!{urlTools.tr('/tag/jlist')}";		
+		$.post(url,function (data){					
+                if(data != null){					
+				var strs = "";					
+				for(var index = 0;index<data.length;index++){						
+                    strs=strs+"<option value='"+data[index].id +"'>"+data[index].name+"</option>";												
+					}
+					$("#selectTag").html(strs);						
+				}
+         },"json");		
+	 }
+	 	 
+ </script>
+  
+<div class="panel panel-default">
+<div class="panel-heading"><a href="#" onclick="ws.callback()" type="button" class=" pull-right">
+	<span class="glyphicon glyphicon-fast-backward"  aria-hidden="true"></span> 返回列表
+</a> 
+分类详情</div>
+	
+  <div class="panel-body">
+	
+	
+		
+	<div class="highlight">
+							
+		<div class="row">
+             
+			  
+			  <div class="col-md-10">
+				
+				<p class="text-left" >
+					分类名:  &nbsp;&nbsp;<span class="text-primary" >$!{type.name}
+                    </span>						
+                </p>
+				
+				<div class="text-left " id="type_tag_view">
+					
+					 <p    style="display:inline-block">  
+						词条:
+                     </p> 
+					
+        			#foreach($tag in $!{type.getTags()})
+        				     &nbsp;&nbsp;                    
+						       <p   class="text-success" style="display:inline-block">                       
+        						$!{tag.name}
+        						<br >
+									<a href="#" link="$!{urlTools.tr('/game/typetag/delete?gameTypeId=')}$!{type.id}&tagId=$!{tag.id}" onclick="ws.post(this,'type_tag_view')" class="btn btn-xs btn-danger " role="button">删除</a>
+        					
+								
+                          		</p>
+                
+						   				
+					#end
+				
+					 &nbsp;&nbsp;  
+					      <p   class="text-success" style="display:inline-block">                       
+        						
+        						<br >
+									<a onclick="initTag()" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#tagModel">
+        					添加</a> 
+								
+                          </p>
+                    </div>
+					
+													
+			  </div>
+			  <div class="col-md-2">
+			  </div>
+		</div>
+							
+				
+		
+		<div class="modal fade" id="tagModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加词条</h4>
+                  </div>
+                  <div class="modal-body">
+					<form role="form" class="form-horizontal" id="tagCreate" method="post" action="$!{urlTools.tr('/game/typetag/create')}" >
+						<input type="hidden" name="gameTypeId" value="$!{type.id}">						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">分类名称</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">$!{type.name}</p>
+                            </div>
+                          </div>
+						
+						  <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">选择词条</label>
+                            <div class="col-sm-4">
+                             <select class="form-control" name="tagId" id="selectTag">
+    							    						  
+                            </select>
+                            </div>
+                          </div>
+						  
+						  
+                      
+						 </form>
+						
+						
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                   <button type="button" onclick="ws.ajaxrefcreate($('#tagCreate'),'#type_tag_view')" class="btn btn-primary" data-dismiss="modal">提交</button>
+					
+                  </div>
+				   
+                </div>
+              </div>
+            </div>	
+			
+			
+       </div>
+	</div>
+</div>
+                          

@@ -1,0 +1,224 @@
+
+
+<SCRIPT >
+$('#gameCreate').submit(function() {
+    jQuery.ajax({
+    url:"$!{urlTools.tr('/game/create')}",
+    data:$('#gameCreate').serialize(),
+    type:"POST",  
+    success:function(data)
+    {
+        　		$("#container_iframe").html(data); 
+    }
+    });
+    return false;
+});
+
+
+</SCRIPT>
+
+<script>
+			$(function() {
+			
+					$.getScript("$!{urlTools.ts('/kindeditor/kindeditor.js')}", function() {
+					
+						//KindEditor.create('textarea[name="content"]');
+						KindEditor.basePath = "$!{urlTools.ts('/kindeditor/')}";
+						KindEditor.pluginsPath = "$!{urlTools.ts('/kindeditor/plugins/')}";
+						var editor = KindEditor.editor({
+                       	allowFileManager: false,
+						allowUpload : true,
+						basePath : "$!{urlTools.ts('/kindeditor/')}",
+					pluginsPath : "$!{urlTools.ts('/kindeditor/plugins/')}",
+                        fileManagerJson: "$!{urlTools.tr('/ke/filelist')}",
+                		uploadJson: "$!{urlTools.tr('/ke/upload')}",
+                        urlType: 'domain',
+                        
+                        });	
+    			
+    					KindEditor('#ImageUrlBtn').click(function() {
+            				editor.loadPlugin('image', function() {
+            					editor.plugin.imageDialog({						
+            						imageUrl :  KindEditor('#ImageUrlImg').attr('src'),
+            						clickFn : function(url, title, width, height, border, align) {
+            				            
+            							KindEditor('#ImageUrlImg').attr('src',url );								 
+            							$('#img').val(url);							 
+            							editor.hideDialog();
+            						}
+            					});
+            				});
+            			});	
+						
+						KindEditor('#IconUrlBtn').click(function() {
+            				editor.loadPlugin('image', function() {
+            					editor.plugin.imageDialog({						
+            						imageUrl :  KindEditor('#IconUrlImg').attr('src'),
+            						clickFn : function(url, title, width, height, border, align) {
+            				            
+            							KindEditor('#IconUrlImg').attr('src',url );								 
+            							$('#icon').val(url);							 
+            							editor.hideDialog();
+            						}
+            					});
+            				});
+            			});	
+					});
+					
+					$.getScript("$!{urlTools.ts('/kindeditor/lang/zh_CN.js')}", function() {
+			
+					});	
+			});
+		</script>
+
+<div class="panel panel-default" >
+<div class="panel-heading">
+	<a href="#" onclick="ws.callback()" type="button" class=" pull-right">
+	<span class="glyphicon glyphicon-fast-backward"  aria-hidden="true"></span> 返回列表
+</a>
+	新建游戏</div>
+	
+  <div class="panel-body" >
+		<form class="form-horizontal" id="gameCreate">
+			
+			
+          <div class="form-group">
+            <label for="inputgameName" class="col-sm-2 control-label">游戏名称</label>
+            <div class="col-sm-10">
+              <input type="text"  class="form-control" name="name" id="inputgameName" >
+            </div>
+          </div>
+		  
+		  
+          <div class="form-group">
+            <label for="inputurl" class="col-sm-2 control-label">游戏链接</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="url" id="inputurl" >
+            </div>
+          </div>
+		  
+		  <div class="form-group">
+            <label for="inputdescription" class="col-sm-2 control-label">游戏简介</label>
+            <div class="col-sm-10">
+				<textarea name="description" class="form-control"  id="inputdescription"></textarea>
+            </div>
+          </div>
+		  
+		  <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">游戏星级</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="star" name="star" placeholder="星级,1-10">
+            </div>
+          </div>
+		  
+		  <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">点赞次数</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="praise" name="praise" placeholder="0-9999999999">
+            </div>
+          </div>
+		  
+		  <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">差评次数</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="belittle" name="belittle" placeholder="0-9999999999">
+            </div>
+          </div>
+		  
+		   <div class="form-group" >
+             <label for="forlinkEmail" class="col-sm-2 control-label">热门标签<span id="forlinkEmail" style="color:red"> </span></label>
+			 
+			  <label class="radio-inline">
+                <input type="radio" name="hotflag" id="hotflag1" value="1" checked>
+                                                  是
+              </label >
+              <label class="radio-inline">
+                <input type="radio" name="hotflag" id="hotflag2" value="0" >
+                                                  否
+              </label>                        
+           </div>
+		  
+		   <div class="form-group" >
+             <label for="forlinkEmail" class="col-sm-2 control-label">最新标签<span id="forlinkEmail" style="color:red"> </span></label>
+			 
+			  <label class="radio-inline">
+                <input type="radio" name="nowflag" id="nowflag1" value="1" checked>
+                                                  是
+              </label >
+              <label class="radio-inline">
+                <input type="radio" name="nowflag" id="nowflag2" value="0" >
+                                                  否
+              </label>                        
+           </div>
+		   
+		   <div class="form-group" >
+             <label for="forlinkEmail" class="col-sm-2 control-label">推荐标签<span id="forlinkEmail" style="color:red"> </span></label>
+			 
+			  <label class="radio-inline">
+                <input type="radio" name="recommend" id="recommend1" value="1" checked>
+                                                  是
+              </label >
+              <label class="radio-inline">
+                <input type="radio" name="recommend" id="recommend2" value="0" >
+                                                  否
+              </label>                        
+           </div>
+		   
+		  <div class="form-group" >
+             <label for="forlinkEmail" class="col-sm-2 control-label">神级标签<span id="forlinkEmail" style="color:red"> </span></label>
+			 
+			  <label class="radio-inline">
+                <input type="radio" name="godflag" id="godflag1" value="1" checked>
+                                                  是
+              </label >
+              <label class="radio-inline">
+                <input type="radio" name="godflag" id="godflag2" value="0" >
+                                                  否
+              </label>                        
+           </div>
+		   
+		   <div class="form-group">
+              <label for="forbriefIntro" class="col-sm-2 control-label">icon图片</label>
+			  <div class="col-sm-10">
+              	<button type="button" class="btn btn-mini" id="IconUrlBtn">选择图片
+                </button>
+                <br>
+                <img id="IconUrlImg" name="IconUrlImg" src="" style="width:96px;height: 124px;"/>
+                <input type="hidden" name="icon" id="icon" value = "">					
+				<span class="help-inline">建议图片大小为:124x96</span>
+			   </div>
+            </div> 
+			
+			<div class="form-group">
+              <label for="forbriefIntro" class="col-sm-2 control-label">游戏封面图</label>
+			  <div class="col-sm-10">
+              	<button type="button" class="btn btn-mini" id="ImageUrlBtn">选择图片
+                </button>
+                <br>
+                <img id="ImageUrlImg" name="ImageUrlImg" src="" style="width:96px;height: 124px;"/>
+                <input type="hidden" name="img" id="img" value = "">					
+				<span class="help-inline">建议图片大小为:124x96</span>
+			   </div>
+            </div> 
+		   
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+		  
+		   
+        </form>
+	
+	
+       
+			<!-- 
+		 <textarea name="content" style="width:700px;height:200px;visibility:hidden;">KindEditor</textarea>
+		 -->
+		
+    
+  </div>
+  
+  <div class="panel-footer"></div>
+</div>
+

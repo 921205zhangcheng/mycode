@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)http://v3.bootcss.com/examples/dashboard/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>充值平台</title>
+	
+    #parse("/layout/header.vm") 
+  	<script>
+			$(function() {
+			
+					$.getScript("$!{urlTools.ts('/kindeditor/kindeditor.js')}", function() {
+					
+        					//KindEditor.create('textarea[name="content"]');						
+        					var editor = KindEditor.editor({
+                            allowFileManager: false,
+                            fileManagerJson: "$!{urlTools.tr('/ke/filelist')}",
+                    		uploadJson: "$!{urlTools.tr('/ke/upload')}",
+                            urlType: 'domain',
+                            
+                        });	
+        		
+        				KindEditor('#ImageUrlBtn').click(function() {
+            				editor.loadPlugin('image', function() {
+            					editor.plugin.imageDialog({						
+            						imageUrl :  KindEditor('#ImageUrlImg').attr('src'),
+            						clickFn : function(url, title, width, height, border, align) {
+            				            alert(url);
+            							KindEditor('#ImageUrlImg').attr('src',url );								 
+            							$('#appLogo').val(url);							 
+            							editor.hideDialog();
+            						}
+            					});
+            				});
+            			});	
+						KindEditor('#fileUrlBtn').click(function() {
+            				editor.loadPlugin('insertfile', function() {
+            					editor.plugin.fileDialog({						
+            						fileUrl :  KindEditor('#Url').val(),					
+            						clickFn : function(data) {														
+            							data.title
+            							
+            							editor.hideDialog();
+            						}
+            					});
+            				});
+            			});
+						
+            			
+            			
+					});
+								
+			});
+			
+			function ajxasubmit(target){
+				target.ajaxSubmit({
+                //定义返回JSON数据，还包括xml和script格式
+                dataType:'json',
+				type:'POST',
+                beforeSend: function() {
+                    //表单提交前做表单验证
+                },
+                success: function(data) {
+                    //提交成功后调用
+                    alert("成功");
+                }
+            	});
+				//alert(target.attr("action"));
+				
+				return false;
+			}
+  </script>
+	
+	
+  </head>
+
+  <body>
+
+    
+	#parse("/layout/top.vm")
+		
+	
+    <div class="container-fluid">
+      <div class="row">
+		
+		
+        <div class="col-sm-3 col-md-2 sidebar" >
+          
+		  
+         #parse("layout/leftslide.vm")
+		 
+           
+        </div>
+		
+	
+				
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			
+		<!--
+		<a href="#" onclick="test()">
+			sgaslgj
+        </a>
+		-->
+		
+		<div id="container_iframe">
+              <div class="row placeholders">
+				<table class="table table-bordered">
+					<tr >
+						欢迎进入流量充值平台，点击左侧栏目选择您要进行的操作
+						
+						
+						
+                    </tr>
+					
+					
+				</table>
+				
+               
+            
+              </div>
+        
+             
+            
+           </div>
+        </div>
+		
+		
+		
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+  
+
+
+
+</body>
+</html>

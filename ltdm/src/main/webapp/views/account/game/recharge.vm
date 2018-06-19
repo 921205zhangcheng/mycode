@@ -1,0 +1,51 @@
+
+			<div id = "search_view">	
+				 <div class="thumbnail">
+        				<dl class="dl-horizontal ">
+      
+                        		 <tr>
+                        			<td>$!{context.view}</td>                            
+                                 </tr>
+                        						
+                          </dl>
+        			 </div>
+			    
+		
+		<div id="second_view">
+        
+            	<div class="panel panel-default">
+                <div class="panel-heading"><a asynchronize="true"  href="#" > 游戏列表 </a></div>                	
+                  <div class="panel-body">
+                <table class="table table-bordered">
+					
+                	 <tr>
+                	<td>ID</td>
+                		<td>产品名称</td>
+                		<td>运营商</td>
+                		<td>金额</td>
+						
+                     </tr>
+					 
+                        	#foreach($item in $!{context.list})
+                        		 <tr>
+                        			<td>$!{item.peta_rn}</td>
+                        			<td>$!{item.productclassname}</td>
+									<td>$!{item.modelname}</td>
+									<td>$!{item.productspecname}</td>                               
+                                 </tr>
+                        	#end
+                    </table>
+                		<div id="pageNav">
+                				#parse("/layout/pagenav.vm")
+								
+                           </div>
+                </div>
+                </div>
+                		   
+			   
+			  
+		</div>
+		
+		</div>
+
+                          

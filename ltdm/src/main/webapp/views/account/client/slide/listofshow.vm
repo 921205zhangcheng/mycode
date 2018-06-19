@@ -1,0 +1,26 @@
+
+        			#foreach($ref in $!{show.slideRefs})
+			
+                       <p   class="text-primary bg-info" style="display:inline-block;border:1px solid #CCC; margin-left:20px">                       
+    					<a href="#" class="btn btn-xs btn-success " role="button">$!{ref.pk.slide.id}</a>
+						#if($!{ref.pk.slide.type}==1)
+							$!{ref.pk.slide.imgUrl}
+							#else
+								$!{ref.pk.slide.content}
+							#end
+							<a href="#" onclick="initslideupdate('$!{ref.pk.slide.id}','$!{show.id}')" class="btn btn-xs btn-info " data-toggle="modal" data-target="#slideUpdateModel" role="button">修改</a> 
+    						<a href="#" link="$!{urlTools.tr('/client/slide/ref/delete?slideId=')}$!{ref.pk.slide.id}&slideShowId=$!{showId}" onclick="ws.post(this,'slide_show_view')" class="btn btn-xs btn-danger " role="button">删除</a>
+							
+							 </p>
+                    
+        			#end
+				
+					 &nbsp;&nbsp;  
+					      <p   class="text-success" style="display:inline-block">                       
+        						
+        						<br >
+									<a onclick="initSlide()" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#slideModel">
+        					添加</a> 
+								
+                          </p>
+                    </div>

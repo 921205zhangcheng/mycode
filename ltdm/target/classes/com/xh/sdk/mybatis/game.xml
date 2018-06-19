@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
+<mapper namespace="com.xh.sdk.dao.userDao">
+	
+	<!-- 新增订单 -->
+	<insert id="savePayinfo" useGeneratedKeys="true" keyProperty="id"  parameterType="com.xh.sdk.model.Payinfo">
+		insert into ${tableName}
+			(imei,imsi,iccid,ip,lac,cid,orderId,payType,cpparam,phone,addtime,smsresult,result,resultDesc,appId,ua,province,re,productId,cost,payId,sycstatu)
+		values
+			(#{imei},#{imsi},#{iccid},#{ip},#{bsc_lac},#{bsc_cid},#{orderId},#{payType},#{cpparam},#{phone},NOW(),#{smsresult},#{result},#{resultDesc},#{appId},#{ua},#{province},#{re},#{productId},#{cost},#{payId},#{sycstatu})
+	</insert>
+	
+	<select id="find"  resultType="com.xh.sdk.model.BillingCode">
+		select id,Name,type,yystype,pronvice,level,consumecode,price,codeType,limited as 'limit',mlimited as mlimit,isyong from billing_code where  isyong = 1
+	</select>
+
+	
+	<select id="dxfind"  resultType="com.xh.sdk.model.DxprovCode">
+		select * from dx_prov_manage
+	</select>
+	
+		<!-- 查找老用户 -->
+	<select id="getLtdmOldUserList"  resultType="com.xh.sdk.model.LtdmOldUser">
+		select * from ltdm_old_user
+	</select>
+	
+		<!-- 获取符合下单条件的老用户 -->
+	<select id="getXdOldUserList"  resultType="com.xh.sdk.model.LtdmOldUser">
+		select * from ltdm_old_user where isuse = '1' and statu != '0'
+	</select>
+	
+	<!-- 更新老用户 -->
+    <update id="saveLtdmOldUser" parameterType="com.xh.sdk.model.LtdmOldUser">	
+		update ltdm_old_user set errorCode=#{errorCode},statu=#{statu},endtime=#{endtime}
+		where id=#{id}
+	</update>
+	
+	<select id="getLtdmProductList"  resultType="com.xh.sdk.model.LtdmProductList">
+		select * from ltdm_product_list
+	</select>
+	
+	<select id="getLtdmProductInfo"  resultType="com.xh.sdk.model.LtdmProductInfo">
+		select * from ltdm_product_info
+	</select>
+	
+	<update id="confirmPayInfo" parameterType="com.xh.sdk.model.Payinfo">	
+		update ${tableName} set smsresult=#{smsresult} ,resultDesc=#{resultDesc}
+		where orderId=#{orderId}
+	</update>
+	
+	<update id="updatePayinfoByOrderId" parameterType="com.xh.sdk.model.Payinfo">	
+		update ${tableName} set result=#{result},resultDesc=#{resultDesc},sycstatu=#{sycstatu},appId=#{appId},productId=#{productId}
+		where orderId=#{orderId}
+	</update>	
+	
+     <select id="getBlackphone"  resultType="com.xh.sdk.model.BlackPhone">
+		select * from black_phone
+	</select>
+	
+     <select id="getChannelInfo"  resultType="com.xh.sdk.model.ChannelInfo">
+		select * from channel_info
+	</select>
+	
+    <select id="getChannelCodeInfo"  resultType="com.xh.sdk.model.ChannelCodeInfo">
+		select * from channel_code_info
+	</select>
+
+    <select id="getProductDay"  resultType="java.util.HashMap" parameterType="com.xh.sdk.model.StatisticsObj">
+		SELECT
+	t.pyname,
+	t.productId,
+	t.appId,
+	COUNT(DISTINCT(t.orderId)) as times,
+	SUM(t.cost) as cost
+    FROM
+	(
+		SELECT
+			billing_code.`Name` AS pyname,
+			pay_info_${tableName}.productId,
+			pay_info_${tableName}.appId,
+			billing_code.yystype,
+			pay_info_${tableName}.orderId,
+			pay_info_${tableName}.cost
+		FROM
+			pay_info_${tableName}
+		LEFT JOIN billing_code ON pay_info_${tableName}.productId = CONCAT('500', billing_code.id 
+
+ 
+     )
+		WHERE
+			( pay_info_${tableName}.result = 'succ'  or pay_info_${tableName}.result = '0' )
+			
+		<if test="productId != null and productId != ''">  
+       	 		and pay_info_${tableName}.productId = #{productId}
+    		</if> 
+    		<if test="codeType != null and codeType != ''">  
+       	 		and pay_info_${tableName}.appId = #{appId}
+    		</if> 
+			
+	) t
+
+    GROUP BY
+	t.productId,t.pyname,t.appId
+	</select>
+	
+   	<insert id="saveTuiding" useGeneratedKeys="true" keyProperty="id"  parameterType="com.xh.sdk.model.TuidingObj">
+		insert into tuiding
+			(productId,phone,statu,appId,dgtime,addtime)
+		values
+			(#{productId},#{phone},#{statu},#{appId},#{dgtime},NOW())
+	</insert> 
+	
+  	<select id="getTuidingDay" resultType="java.util.HashMap" parameterType="com.xh.sdk.model.TuidingObj">
+		select t.appId,t.productId,t.pyname,count(DISTINCT(t.phone)) as times  from 		
+		(
+		SELECT
+			billing_code.`Name` AS pyname,
+			tuiding.productId,
+			tuiding.appId,
+			tuiding.phone,
+			tuiding.addtime
+		FROM
+			tuiding 
+		LEFT JOIN billing_code ON tuiding.productId = CONCAT('500', billing_code.id) 
+     )	t
+		where addtime <![CDATA[>=]]> #{addtime} and addtime <![CDATA[<]]> date_add(#{addtime}, interval 1 day)  GROUP BY productId ,appId,pyname
+	</select> 	
+	
+ <select id="getChannelMonth"  resultType="java.util.HashMap" parameterType="com.xh.sdk.model.StatisticsObj">
+		SELECT
+	t.pyname,
+	t.productId,
+	t.appId,
+	COUNT(DISTINCT(t.orderId)) as times,
+	SUM(t.cost) as cost
+    FROM
+	(
+		SELECT
+			billing_code.`Name` AS pyname,
+			pay_info_${tableName}.productId,
+			pay_info_${tableName}.appId,
+			billing_code.yystype,
+			pay_info_${tableName}.orderId,
+			pay_info_${tableName}.cost
+		FROM
+			pay_info_${tableName}
+		LEFT JOIN billing_code ON pay_info_${tableName}.productId = CONCAT('500', billing_code.id 
+
+ 
+     )
+		WHERE
+			 pay_info_${tableName}.result = '0'  and  pay_info_${tableName}.sycstatu = '0' 
+			
+		<if test="productId != null and productId != ''">  
+       	 		and pay_info_${tableName}.productId = #{productId}
+    		</if> 
+    		<if test="appId != null and appId != ''">  
+       	 		and pay_info_${tableName}.appId = #{appId}
+    		</if> 
+			
+	) t
+
+    GROUP BY
+	t.productId,t.pyname,t.appId
+	</select> 
+	<!-- 添加 ltdm_channel_info查询 -->
+	<select id="getLtdmChannelInfo"  resultType="com.xh.sdk.model.LtdmChannelInfo">
+		select * from ltdm_channel_info
+	</select>	
+	
+	
+	
+		<!--2018-03-21 添加 pay_info_day查询 -->
+	<select id="getPayInfosum"  resultType="com.xh.sdk.model.PayinfoDay" parameterType="com.xh.sdk.model.Payinfo">
+	select a.*,t.companyId,t.payType from (select sum(cost) as costsum,cpparam,productId,province,result from pay_info_${tableName} group by cpparam,
+	productId,province, result  order by productId,cpparam,province) a left join   ltdm_product_list  t on a.productId=t.spNumber and a.cpparam=t.moContent
+	</select>
+	
+	<!-- 新增订单 -->
+	<insert id="savePayinfoDay" useGeneratedKeys="true" keyProperty="id"  parameterType="com.xh.sdk.model.PayinfoDay">
+		insert into ltdm_pay_info_day
+			(cpparam,addtime,result,province,productId,costsum,payType,companyId)
+		values
+			(#{cpparam},${addtime},#{result},#{province},#{productId},#{costsum},#{payType},#{companyId})
+	</insert>
+	
+	<!-- 添加 所有指令查询 -->
+	<select id="getLtdmmoContents"  resultType="String">
+		select DISTINCT(moContent) from ltdm_product_list
+	</select>	
+
+<!-- 添加 产品查询根据产品ID -->
+	<select id="getLtdmProductListById"  resultType="com.xh.sdk.model.LtdmProductList" parameterType="com.xh.sdk.model.Payinfo">
+		select * from ltdm_product_list where spNumber=#{productId} and moContent =#{cpparam}
+	</select>	
+	
+		<!-- 添加 指定号码黑名单查询 -->
+	<select id="getBlackphoneByPhone"  resultType="com.xh.sdk.model.BlackPhone" parameterType="String">
+		SELECT * FROM black_phone where phone=#{phone}
+	</select>	
+	
+	<!-- 新增黑名单 -->
+	<insert id="saveBlcakPhone" useGeneratedKeys="false" keyProperty="phone"  parameterType="com.xh.sdk.model.BlackPhone">
+		insert into black_phone
+			(phone,imei,imsi)
+		values
+			(#{phone},#{imei},#{imsi})
+	</insert>
+	
+	<!--只插入包月的-->
+	<insert id="insetrolduser" useGeneratedKeys="true" keyProperty="id" parameterType="com.xh.sdk.model.Payinfo">
+		INSERT INTO ltdm_old_user(phone,prov,company,srcNum,smscontent,serviceType,productName,feevalue,firsttime,isuse)   
+	select SUBSTR(a.phone,3,11),b.prov,a.company,a.productId,a.cpparam,a.serviceType,a.productName,a.cost,a.addtime,0 from 
+ 	(select f.phone, f.province,f.productId,f.cpparam,f.addtime,f.cost,t.productName,t.serviceType,t.company from pay_info_${tableName} f, ltdm_product_list t  where result="0" and 
+  	t.payType=2 and f.productId=t.spNumber and f.cpparam =t.moContent )  a
+    left join (select  provid,prov from  dx_prov_manage  group by provid,prov) b on a.province=b.provid
+	</insert>
+	
+	<select id="getPayInfos"  resultType="com.xh.sdk.model.Payinfo" parameterType="com.xh.sdk.model.Payinfo">
+		select *  from pay_info_${tableName} where result =0
+	</select>	
+</mapper>

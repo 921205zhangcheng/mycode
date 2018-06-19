@@ -1,0 +1,514 @@
+
+ <script >
+ var editorisLoad = false;
+ function initType(){
+		var url = "$!{urlTools.tr('/game/type/jlist')}";		
+		$.post(url,function (data){					
+                if(data != null){					
+				var strs = "";					
+				for(var index = 0;index<data.length;index++){						
+                    strs=strs+"<option value='"+data[index].id +"'>"+data[index].name+"</option>";												
+					}
+					$("#selectType").html(strs);						
+				}
+         },"json");		
+	 }
+	 
+	 function initComment(){
+		var url = "$!{urlTools.tr('/game/comment/jlist')}";		
+		$.post(url,function (data){					
+                if(data != null){
+				console.log(data[0]);
+				var strs = "";					
+				for(var index = 0;index<data.length;index++){						
+                    strs=strs+"<option value='"+data[index].id +"'>"+data[index].content+"</option>";												
+					}
+					$("#selectComment").html(strs);						
+				}
+         },"json");		
+	 }
+	 
+function  loadEditor(){
+if(!editorisLoad){
+
+	$.getScript("$!{urlTools.ts('/kindeditor/kindeditor.js')}", function() {
+					
+						//KindEditor.create('textarea[name="content"]');
+						KindEditor.basePath = "$!{urlTools.ts('/kindeditor/')}";
+						KindEditor.pluginsPath = "$!{urlTools.ts('/kindeditor/plugins/')}";
+						var editor = KindEditor.editor({
+                       	allowFileManager: false,
+						allowUpload : true,
+						basePath : "$!{urlTools.ts('/kindeditor/')}",
+						pluginsPath : "$!{urlTools.ts('/kindeditor/plugins/')}",
+                        fileManagerJson: "$!{urlTools.tr('/ke/filelist')}",
+                		uploadJson: "$!{urlTools.tr('/ke/upload')}",
+                        urlType: 'domain',
+                        
+                        });	
+    			    					
+						
+						KindEditor('#picUrlBtn').click(function() {
+            				editor.loadPlugin('image', function() {
+            					editor.plugin.imageDialog({						
+            						imageUrl :  KindEditor('#picUrlImg').attr('src'),
+            						clickFn : function(url, title, width, height, border, align) {
+									
+            							KindEditor('#picUrlImg').attr('src',url );								 
+            							$('#picUrl').val(url);		
+										$('#picPath').val(title);		
+            							editor.hideDialog();
+										
+            						}
+            					});
+            				});
+            			});	
+						
+						KindEditor('#ppicUrlBtn').click(function() {
+            				editor.loadPlugin('image', function() {
+            					editor.plugin.imageDialog({						
+            						imageUrl :  KindEditor('#ppicUrlImg').attr('src'),
+            						clickFn : function(url, title, width, height, border, align) {
+									
+            							KindEditor('#ppicUrlImg').attr('src',url );								 
+            							$('#ppicUrl').val(url);		
+										$('#ppicPath').val(title);		
+            							editor.hideDialog();
+										
+            						}
+            					});
+            				});
+            			});	
+						
+					});
+					
+					$.getScript("$!{urlTools.ts('/kindeditor/lang/zh_CN.js')}", function() {
+			
+					});	
+			editorisLoad = true;
+	}
+}
+	 
+$('#commentModel').on('show.bs.modal', function () {
+  
+})
+
+function initcommentupdate(gameId,commentId){
+	var url = "$!{urlTools.tr('/game/comment/ref/get')}";
+	url +="?gameId="+gameId+"&commentId="+commentId;
+	$.post(url,function (data){					
+        if(data != null){					
+			$('#ccommentId').val(data.pk.comment.id);		
+			$('#ccontent').html(data.pk.comment.content);	
+			$('#ccount').val(data.count);	
+		}
+ 	},"json");	
+	
+}
+
+function initpicupdate(gameId,picId){
+	var url = "$!{urlTools.tr('/game/pic/get')}";
+	url +="?gameId="+gameId+"&id="+picId;
+	$.post(url,function (data){					
+        if(data != null){	
+		console.log(data);
+		$('#ppicId').val(data.id);		
+		$('#ppicUrl').val(data.picUrl);
+		$('#ppicUrlImg').attr("src",data.picUrl);			
+		$('#ppicPath').val(data.picPath);	
+		$('#psort').val(data.sort);	
+		}
+ 	},"json");	
+	loadEditor();
+}
+ </script>
+  
+<div class="panel panel-default">
+<div class="panel-heading"><a href="#" onclick="ws.callback()" type="button" class=" pull-right">
+	<span class="glyphicon glyphicon-fast-backward"  aria-hidden="true"></span> 返回列表
+</a> 
+游戏详情</div>
+	
+  <div class="panel-body">
+	
+	
+		
+	<div class="highlight">
+			<div class="container marketing">
+		<div class="pull-right" style="width:160px; position: absolute;right: 40px;top: 100px;" id="update_alert_view">
+			
+		</div>
+		</div>				
+		<div class="row">
+              <div class="col-md-4">
+					<p class="text-left" >
+					<span class="text-primary" >$!{game.name}
+                    </span>						
+                </p>
+					 <img src="$!{game.img}" alt="..." class="img-thumbnail" style="width: 200px; height: 240px;">
+			  </div>
+			  
+			  <div class="col-md-8">
+				
+				<p class="text-left" >
+					星级:  &nbsp;&nbsp;<span class="text-primary" >$!{game.star}
+                    </span>						
+                </p>
+				
+				<p class="text-left" >
+					点赞:  &nbsp;&nbsp;<span class="text-primary" >$!{game.praise}
+                    </span>						
+                </p>
+				
+				
+				<p class="text-left" >
+					差评:  &nbsp;&nbsp;<span class="text-primary" >$!{game.belittle}
+                    </span>						
+                </p>
+				<p class="text-left" >
+					链接:  &nbsp;&nbsp;<span class="text-primary" >$!{game.url}
+                    </span>						
+                </p>
+				
+				<p class="text-left" >
+					标签:  <span class="text-primary" >
+						#if($!{game.recommend}==1)
+							&nbsp;&nbsp;推荐
+						#end
+						
+						#if($!{game.hotflag}==1)
+							&nbsp;&nbsp;热门  
+						#end
+						
+						#if($!{game.nowflag}==1)
+							&nbsp;&nbsp;最新
+						#end
+					
+                    </span>						
+                </p>
+				
+				<div class="text-left " id="game_type_view">
+					 <p    style="display:inline-block">  
+						分类
+						<br />
+						信息
+                     </p> 
+        			#foreach($type in $!{game.getGametypes()})
+        				     &nbsp;&nbsp;                    
+						       <p   class="text-success" style="display:inline-block">                       
+        						$!{type.name}
+        						<br >
+									
+        						<a href="#" link="$!{urlTools.tr('/game/type/ref/delete?gameId=')}$!{game.id}&typeId=$!{type.id}" onclick="ws.post(this,'game_type_view')" class="btn btn-xs btn-danger " role="button">删除</a> 
+								
+                          </p>
+                
+						   				
+					#end
+					 &nbsp;&nbsp;  
+						<p   class="text-success" style="display:inline-block">                       
+        						
+        						<br >
+									<a onclick="initType()" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#typeModel">
+        					添加</a> 
+								
+                          </p>
+                    </div>
+					
+					<p class="text-left" >
+					简介:  &nbsp;&nbsp;<span class="text-primary" >$!{game.description}
+                    </span>						
+                </p>
+								
+			  </div>
+		</div>
+		<h5 >
+			评价
+        </h5>
+		<div class="row" id="game_comment_view">
+			
+			
+			#foreach($ref in $!{game.commentRefs})
+			
+               <p   class="text-primary bg-info" style="display:inline-block;border:1px solid #CCC; margin-left:20px">                       
+        					<a href="#" class="btn btn-xs btn-success " role="button">$!{ref.count}</a>
+							$!{ref.pk.comment.content}			
+								<a href="#" onclick="initcommentupdate('$!{game.id}','$!{ref.pk.comment.id}')" class="btn btn-xs btn-info " data-toggle="modal" data-target="#commentUpdateModel" role="button">修改</a> 
+        						<a href="#" link="$!{urlTools.tr('/game/comment/ref/delete?gameId=')}$!{game.id}&commentId=$!{ref.pk.comment.id}" onclick="ws.post(this,'game_comment_view')" class="btn btn-xs btn-danger " role="button">删除</a>
+								
+								 </p>
+            
+			#end
+			 
+			   <p   class="text-primary" style="display:inline-block ">                       
+					<br >
+									<a onclick="initComment()" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#commentModel">
+        					添加</a> 
+					 </p>
+			  
+				</div>							
+
+											
+		<h5 >
+			截图
+        </h5>
+						<div class="row" id="game_pic_view">
+					
+						#foreach($pic in $!{game.getPics()})
+						
+                          <div class="col-sm-2">
+                              <img src="$!{pic.picUrl}" alt="" class="img-thumbnail" style="width: 140px; height: 140px;">
+                             
+                              
+                               
+                                <p class="text-center">
+									<a href="#"  onclick="initpicupdate('$!{game.id}','$!{pic.id}')" class="btn btn-xs btn-info " data-toggle="modal" data-target="#picUpdateModel" role="button">修改</a>
+									<a href="#" link="$!{urlTools.tr('/game/pic/delete?id=')}$!{pic.id}&gameId=$!{game.id}" onclick="ws.post(this,'game_pic_view')" class="btn btn-xs btn-danger" role="button">删除</a> </p>
+								
+                             
+                    
+                          </div>
+                        
+						#end
+						 <div class="col-sm-2">
+                              <img src="#" alt="..." class="img-thumbnail" style="width: 140px; height: 140px;">
+                             
+                              
+                          
+                                <p class="text-center"><a href="#" onclick="loadEditor()" class="btn btn-xs btn-primary " data-toggle="modal" data-target="#picModel" role="button">添加</a> </p>
+                             
+                    
+                          </div>
+						  						  
+					</div>							
+				
+		
+		<div class="modal fade" id="typeModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加分类</h4>
+                  </div>
+                  <div class="modal-body">
+					<form role="form" class="form-horizontal" id="typeCreate" method="post" action="$!{urlTools.tr('/game/type/ref/create')}" >
+						<input type="hidden" name="gameId" value="$!{game.id}">						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">游戏名称</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">$!{game.name}</p>
+                            </div>
+                          </div>
+						
+						  <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">选择分类</label>
+                            <div class="col-sm-4">
+                             <select class="form-control" name="typeId" id="selectType">
+    							    						  
+                            </select>
+                            </div>
+                          </div>
+						  						  
+                        </form>
+																		
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" onclick="ws.ajaxrefcreate($('#typeCreate'),'#game_type_view')" class="btn btn-primary" data-dismiss="modal">提交</button>
+                  </div>
+                </div>
+              </div>
+            </div>	
+			
+			
+			<div class="modal fade" id="commentModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加评价</h4>
+                  </div>
+                  <div class="modal-body">
+					<form role="form" class="form-horizontal" id="commentCreate" method="post" action="$!{urlTools.tr('/game/comment/ref/create')}" >
+						<input type="hidden" name="gameId" value="$!{game.id}">						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">游戏名称</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">$!{game.name}</p>
+                            </div>
+                          </div>
+						
+						  <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">选择评价</label>
+                            <div class="col-sm-4">
+                             <select class="form-control" name="commentId" id="selectComment">
+    							    						  
+                            </select>
+                            </div>
+                          </div>
+						  
+						  <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">支持数量</label>
+                            <div class="col-sm-4">
+                             <input type="text"  class="form-control" name="count" id="selectType" value="1">
+    							    						  
+                           
+                            </div>
+                          </div>
+                        
+						</form>
+					</div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" onclick="ws.ajaxrefcreate($('#commentCreate'),'#game_comment_view')" class="btn btn-primary" data-dismiss="modal">提交</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+			
+			<div class="modal fade" id="commentUpdateModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">评价修改</h4>
+                  </div>
+                  <div class="modal-body">
+					<form role="form" class="form-horizontal" id="commentUpdate" method="post" action="$!{urlTools.tr('/game/comment/ref/update')}" >
+							<input type="hidden" id="ccommentId" name="commentId" value="">	
+							<input type="hidden" name="gameId" value="$!{game.id}">						
+								<div class="form-group">
+                            <label class="col-sm-2 control-label">游戏名称</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">$!{game.name}</p>
+                            </div>
+                          </div>
+						
+						  <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">评价名称</label>
+                            <div class="col-sm-4">
+								<p class="form-control-static" id="ccontent"></p>
+                            </div>
+                          </div>
+						  
+						  <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">支持数量</label>
+                            <div class="col-sm-4">
+                             <input type="text"  class="form-control" name="count" id="ccount" value="">
+    							    						                             
+                            </div>
+                          </div>
+                        
+						</form>
+					</div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" onclick="ws.ajaxrefcreate($('#commentUpdate'),'#game_comment_view')" class="btn btn-primary" data-dismiss="modal">提交</button>
+                  </div>
+                </div>
+              </div>
+            </div>	
+			
+			<div class="modal fade" id="picModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加截图</h4>
+                  </div>
+                  <div class="modal-body">
+					<form role="form" class="form-horizontal" id="picCreate" method="post" action="$!{urlTools.tr('/game/pic/create')}" >
+						<input type="hidden" name="gameId" value="$!{game.id}">						
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">游戏名称</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">$!{game.name}</p>
+                            </div>
+                          </div>
+						
+						  <div class="form-group">
+                              <label for="forbriefIntro" class="col-sm-2 control-label">icon图片</label>
+                			  <div class="col-sm-10">
+                              	<button type="button" class="btn btn-mini" id="picUrlBtn">选择图片
+                                </button>
+                                <br>
+                                <img id="picUrlImg" name="picUrlImg" src="" style="width:96px;height: 124px;"/>
+                                <input type="hidden" name="picUrl" id="picUrl" value = "">	
+									<input type="hidden" name="picPath" id="picPath" value = "">	
+                				<span class="help-inline">建议图片大小为:124x96</span>
+                			   </div>
+                           </div> 
+						   
+						    <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">排序</label>
+                            <div class="col-sm-4">
+                             <input type="text"  class="form-control" name="sort"  value="1">
+    							    						                             
+                            </div>
+                          </div>
+									  						                          
+						</form>
+					</div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" onclick="ws.ajaxrefcreate($('#picCreate'),'#game_pic_view')" class="btn btn-primary" data-dismiss="modal">提交</button>
+                  </div>
+                </div>
+              </div>
+            </div>	
+		
+			
+			<div class="modal fade" id="picUpdateModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">修改截图</h4>
+                  </div>
+                  <div class="modal-body">
+					<form role="form" class="form-horizontal" id="picUpdate" method="post" action="$!{urlTools.tr('/game/pic/update')}" >
+						<input type="hidden" name="gameId" value="$!{game.id}">
+						<input type="hidden" name="id" id="ppicId" value="">	
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">游戏名称</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">$!{game.name}</p>
+                            </div>
+                          </div>
+						
+						  <div class="form-group">
+                              <label for="forbriefIntro" class="col-sm-2 control-label">icon图片</label>
+                			  <div class="col-sm-10">
+                              	<button type="button" class="btn btn-mini" id="ppicUrlBtn">选择图片
+                                </button>
+                                <br>
+                                <img id="ppicUrlImg" name="picUrlImg" src="" style="width:96px;height: 124px;"/>
+                                <input type="hidden" name="picUrl" id="ppicUrl" value = "">	
+									<input type="hidden" name="picPath" id="ppicPath" value = "">	
+                				<span class="help-inline">建议图片大小为:124x96</span>
+                			   </div>
+                           </div> 
+									  	
+						     <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">排序</label>
+                            <div class="col-sm-4">
+                             <input type="text"  class="form-control" name="sort" id="psort" value="">
+    							    						                             
+                            </div>
+                          </div>
+						  
+						</form>
+					</div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" onclick="ws.ajaxrefcreate($('#picUpdate'),'#game_pic_view')" class="btn btn-primary" data-dismiss="modal">提交</button>
+                  </div>
+                </div>
+              </div>
+            </div>	
+			
+		
+       </div>
+	</div>
+</div>
+                          

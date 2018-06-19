@@ -1,0 +1,262 @@
+
+ <script >
+ function initSlide(){
+		url = "$!{urlTools.tr('/client/slide/jlist?type=')}$!{show.type}";		
+		$.post(url,function (data){					
+                if(data != null){					
+				var strs = "";					
+				for(var index = 0;index<data.length;index++){		
+    					if(data[index].type = 1){
+							console.log(data[index]);
+    						strs=strs+"<option value='"+data[index].id +"'>"+data[index].imgUrl+"</option>";	
+    					}else{
+							strs=strs+"<option value='"+data[index].id +"'>"+data[index].content+"</option>";
+						}
+                    											
+					}
+					$("#selectSlide").html(strs);						
+				}
+         },"json");		
+	 }
+	 
+	function initslideupdate(slideId,showId){
+	var url = "$!{urlTools.tr('/client/slide/ref/get')}";
+	url +="?slideId="+slideId+"&showId="+showId;
+	$.post(url,function (data){					
+        if(data != null){		
+
+			$('#upSlideId').val(data.pk.slide.id);
+			if(data.pk.slide.type==1){
+			
+				$('#ccontent').html(data.pk.slide.imgUrl);	
+				
+			}else{
+			
+				$('#ccontent').html(data.pk.slide.content);	
+				
+			}
+			$('#upsort').val(data.sort);	
+		}
+ 	},"json");	
+	
+}
+	 	 
+ </script>
+  
+<div class="panel panel-default">
+<div class="panel-heading"><a href="#" onclick="ws.callback()" type="button" class=" pull-right">
+	<span class="glyphicon glyphicon-fast-backward"  aria-hidden="true"></span> 返回列表
+</a> 
+轮播组详情</div>
+	
+  <div class="panel-body">
+	
+	
+		
+	<div class="highlight">
+							
+		<div class="row">
+             
+			  
+			  <div class="col-md-10">
+				
+				<p class="text-left" >
+					轮播组id:  &nbsp;&nbsp;<span class="text-primary" >$!{show.id}
+                    </span>						
+                </p>
+				
+				<p class="text-left" >
+					使用场景:  &nbsp;&nbsp;<span class="text-primary" >
+						#if($!{show.scene}==1)
+							首页
+							#elseif($!{show.scene}==2)
+								热门
+								#elseif($!{show.scene}==3)
+									最新
+									#end
+                    </span>						
+                </p>
+				
+				<p class="text-left" >
+					类型:  &nbsp;&nbsp;<span class="text-primary" >#if($!{show.type}==1)
+							图片
+							#elseif($!{show.type}==2)
+								字幕						
+									#end
+                    </span>						
+                </p>
+													
+			  </div>
+			  <div class="col-md-2">
+			  </div>
+		</div>
+		<h5 >
+			轮播子项:
+        </h5>
+		<div class="row " id="slide_show_view">
+										
+					
+        			#foreach($ref in $!{show.slideRefs})
+			
+                       <p   class="text-primary bg-info" style="display:inline-block;border:1px solid #CCC; margin-left:20px">                       
+    					<a href="#" class="btn btn-xs btn-success " role="button">$!{ref.pk.slide.id}</a>
+						#if($!{ref.pk.slide.type}==1)
+							$!{ref.pk.slide.imgUrl}
+							#else
+								$!{ref.pk.slide.content}
+							#end
+							<a href="#" onclick="initslideupdate('$!{ref.pk.slide.id}','$!{show.id}')" class="btn btn-xs btn-info " data-toggle="modal" data-target="#slideUpdateModel" role="button">修改</a> 
+    						<a href="#" link="$!{urlTools.tr('/client/slide/ref/delete?slideId=')}$!{ref.pk.slide.id}&slideShowId=$!{show.id}" onclick="ws.post(this,'slide_show_view')" class="btn btn-xs btn-danger " role="button">删除</a>
+							
+							 </p>
+                    
+        			#end
+				
+					 &nbsp;&nbsp;  
+					      <p   class="text-success" style="display:inline-block">                       
+        						
+        						<br >
+									<a onclick="initSlide()" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#slideModel">
+        					添加</a> 
+								
+                          </p>
+                    </div>						
+
+									
+				
+		
+		<div class="modal fade" id="slideModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">添加轮播子项</h4>
+                  </div>
+                  <div class="modal-body">
+					<form role="form" class="form-horizontal" id="slideCreate" method="post" action="$!{urlTools.tr('/client/slide/ref/create')}" >
+						<input type="hidden" name="slideShowId" value="$!{show.id}">
+							
+						 <div class="form-group">
+                            <label class="col-sm-2 control-label">轮播组名称</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">$!{show.name}</p>
+                            </div>
+                          </div>
+						  
+						  <div class="form-group">
+                            <label class="col-sm-2 control-label">轮播组类型</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">
+								#if($!{show.type}==1)
+								图片	
+								#else
+									文字
+									#end
+							   </p>
+                            </div>
+                          </div>
+						
+						  <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">轮播子项</label>
+                            <div class="col-sm-10">
+                             <select class="form-control" name="slideId" id="selectSlide">
+    							    						  
+                            </select>
+                            </div>
+                          </div>
+						  <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">序号</label>
+                            <div class="col-sm-4">
+                             <input type="text"  class="form-control" name="sort"  value="1">
+    							    						  
+                           
+                            </div>
+                          </div>
+						  
+                      
+						 </form>
+						
+						
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                   <button type="button" onclick="ws.ajaxrefcreate($('#slideCreate'),'#slide_show_view')" class="btn btn-primary" data-dismiss="modal">提交</button>
+					
+                  </div>
+				   
+                </div>
+              </div>
+            </div>	
+			
+			
+			<div class="modal fade" id="slideUpdateModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">修改轮播子项</h4>
+                  </div>
+                  <div class="modal-body">
+					<form role="form" class="form-horizontal" id="slideUpdate" method="post" action="$!{urlTools.tr('/client/slide/ref/update')}" >
+						<input type="hidden" name="slideShowId" id="upShowId"  value="$!{show.id}">
+						<input type="hidden" name="slideId" id="upSlideId" value="">	
+						 <div class="form-group">
+                            <label class="col-sm-2 control-label">轮播组名称</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">$!{show.name}</p>
+                            </div>
+                          </div>
+						  
+						  <div class="form-group">
+                            <label class="col-sm-2 control-label">轮播组类型</label>
+                            <div class="col-sm-10">
+                               <p class="form-control-static">
+								#if($!{show.type}==1)
+								图片	
+								#else
+								文字
+								#end
+							   </p>
+                            </div>
+                          </div>
+						
+						  <div class="form-group">
+							#if($!{show.type}==1)
+								<label for="forHeight" class="col-sm-2 control-label">图片内容</label>
+							#else
+								<label for="forHeight" class="col-sm-2 control-label">文字内容</label>
+							#end
+                             
+                            <div class="col-sm-10">
+								<p class="form-control-static" id="ccontent"></p>
+                            </div>
+                          </div>
+						    <div class="form-group">
+                             <label for="forHeight" class="col-sm-2 control-label">序号</label>
+                            <div class="col-sm-4">
+                             <input type="text"  class="form-control" name="sort" id="upsort" >
+    							    						  
+                           
+                            </div>
+                          </div>
+						  
+                      
+						 </form>
+						
+						
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                   <button type="button" onclick="ws.ajaxrefcreate($('#slideUpdate'),'#slide_show_view')" class="btn btn-primary" data-dismiss="modal">提交</button>
+					
+                  </div>
+				   
+                </div>
+              </div>
+            </div>	
+			
+			
+       </div>
+	</div>
+</div>
+                          

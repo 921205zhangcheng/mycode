@@ -1,0 +1,54 @@
+
+
+<SCRIPT >
+$('#commentCreate').submit(function() {
+    jQuery.ajax({
+    url:"$!{urlTools.tr('/game/comment/create')}",
+    data:$('#commentCreate').serialize(),
+    type:"POST",  
+    success:function(data)
+    {
+        　		$("#container_iframe").html(data); 
+    }
+    });
+    return false;
+});
+
+
+</SCRIPT>
+
+<div class="panel panel-default">
+<div class="panel-heading"><a href="#" onclick="ws.callback()" type="button" class=" pull-right">
+	<span class="glyphicon glyphicon-fast-backward"  aria-hidden="true"></span> 返回列表
+</a>创建评价</div>
+	
+  <div class="panel-body">
+	
+        <form class="form-horizontal" id="commentCreate" action="" >
+			
+          <div class="form-group has-success has-feedback">            
+            <label class="control-label col-sm-2" for="name">评价内容</label>
+            <div class="col-sm-4">
+            	<div class="input-group">
+                <span class="input-group-addon">*</span>
+                <input type="text" class="form-control" name="content" value="" id="content" aria-describedby="nameStatus">
+              </div>
+              
+              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+              <span id="weixinNameStatus" class="sr-only">(success)</span>
+            </div>
+          </div>	  
+			<!-- 
+		 <textarea name="content" style="width:700px;height:200px;visibility:hidden;">KindEditor</textarea>
+		 -->
+		 <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit"  class="btn btn-success">保存</button>
+            </div>
+          </div>
+        </form>
+  </div>
+  
+  <div class="panel-footer"></div>
+</div>
+

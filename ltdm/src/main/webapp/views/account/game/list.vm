@@ -1,0 +1,85 @@
+	  
+
+        
+            	<div class="panel panel-default">
+                <div class="panel-heading"><a asynchronize="true"  href="#"> 游戏列表 </a></div>                	
+                  <div class="panel-body">
+                <table class="table table-bordered">
+					
+                	 
+                	 <tr>
+                		<td>ID</td>
+                		<td>游戏名称</td>
+                		<td>分类</td>
+                		<td>标签</td>
+                		<td>创建时间</td>
+                		<td>操作</td> 
+						
+                     </tr>
+					 
+                        	#foreach($item in $!{context.list})
+                        		 <tr>
+                        			<td>$!{item.id}</td>
+                        			<td>$!{item.name}</td>
+									
+                					<td>
+										#foreach($type in $!{item.getGametypes()})
+											$!{type.name}&nbsp;
+											#end
+										</td>		
+									<td>
+									#if($!{item.recommend}==1)
+										推荐
+									#end
+									#if($!{item.hotflag}==1)
+										热门  
+									#end
+									#if($!{item.nowflag}==1)
+										最新
+									#end
+									</td>
+										
+                        			<td>
+										
+                						$!{item.createTime}
+										
+                					</td>
+                					
+                					<td>
+                						
+                						#if($!{item.status}==1)
+                						<div class="btn-group" role="group" aria-label="...">
+										  <a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/game/view?id=')}$!{item.id}"  class="btn btn-xs btn-primary">详情</a>
+                						  &nbsp;
+                                          <a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/game/update?id=')}$!{item.id}"  class="btn btn-xs btn-success">修改</a>
+                						  &nbsp;
+                                          <a type="button" onclick="javascript:ws.delback(this,'')" link="$!{urlTools.tr('/game/delete?id=')}$!{item.id}"  class="btn btn-xs btn-danger">删除 </a>                             
+                                        </div>
+										#elseif($!{item.status}==0)
+											<div class="btn-group" role="group" aria-label="...">
+										  <a type="button" onclick="javascript:ws.recback(this,'')" link="$!{urlTools.tr('/game/recover?id=')}$!{item.id}"  class="btn btn-xs btn-warning">恢复</a>
+                						  </div>
+										#end	
+										
+                					</td>
+                                    
+                                 </tr>
+                        	#end
+                    </table>
+                		<div id="pageNav">
+                				<div class=" pull-left pagination">
+                					<a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/game/create')}" class="btn btn-sm btn-primary">新建游戏</a>
+                				</div> 
+                				
+                				#parse("/layout/pagenav.vm")
+								
+                           </div>
+                		   
+                </div>
+                </div>
+                		   
+			   
+			   
+ 
+
+

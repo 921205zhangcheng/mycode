@@ -1,0 +1,111 @@
+2018-03-08 01:35:27 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:35:27 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 01:35:27 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:35:28 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:35:28 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 01:35:28 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:35:28 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 01:35:28 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 01:35:28 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 01:35:28 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 01:38:37 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:38:37 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 01:38:37 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:38:37 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:38:37 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 01:38:37 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:41:33 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:41:33 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 01:41:33 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:41:33 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:41:33 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 01:41:33 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 01:42:22 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 02:01:45 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 03:34:47 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 03:37:50 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 03:40:41 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 16:16:10 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 16:19:02 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 16:19:02 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 16:19:02 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 16:19:03 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 16:19:03 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:10  Object:SOCKET_DISCONNECTED_EVENT,desc:连接尚未初始化。 gwip:null port:-1
+2018-03-08 16:19:03 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:连接尚未初始化。]
+2018-03-08 16:19:03 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 16:19:03 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] Connect state changed:[state:null]
+2018-03-08 16:19:03 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 16:19:03 [com.huawei.smproxy.comm.sgip.SGIPSocketConnection]-[WARN] fireConnectionStateChangeEvent:0  Object:SOCKET_CONNECTED_EVENT
+2018-03-08 16:26:41 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=127.0.0.1:8801
+2018-03-08 16:27:46 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=211.94.164.35:8804
+2018-03-08 16:27:46 [com.core.sgip.interf.DefaultMessageHandler]-[DEBUG] handle message send sgipMsgHead is SGIPMsgHead [messageLength=172, commandId=3, sourceNodeNumber=3073190214, commandGenerateDate=308162746, commandNumber=2] submit detail:Submit [spNumber=10655502130, chargeNumber=8618658191488, userCount=1, listUserNumber=[8618658191488], corpId=90214, serviceType=WDM211, feeType=1, feeValue=0, givenValue=, agentFlag=0, morelatetoMTFlag=0, priority=0, expireTime=, scheduleTime=, reportFlag=1, tpPid=0, tpUdhi=0, messageCoding=8, messageType=0, messageLength=8, messageContent=222, reserve=]
+2018-03-08 16:42:11 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=211.94.164.35:8804
+2018-03-08 16:42:11 [com.core.sgip.interf.DefaultMessageHandler]-[DEBUG] handle message send sgipMsgHead is SGIPMsgHead [messageLength=172, commandId=3, sourceNodeNumber=3073190214, commandGenerateDate=308164211, commandNumber=2] submit detail:Submit [spNumber=10655502130, chargeNumber=8618658191488, userCount=1, listUserNumber=[8618658191488], corpId=90214, serviceType=WDM211, feeType=1, feeValue=0, givenValue=, agentFlag=0, morelatetoMTFlag=0, priority=0, expireTime=, scheduleTime=, reportFlag=1, tpPid=0, tpUdhi=0, messageCoding=8, messageType=0, messageLength=8, messageContent=222, reserve=]
+2018-03-08 17:13:03 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=211.94.164.35:8804
+2018-03-08 17:13:03 [com.core.sgip.interf.DefaultMessageHandler]-[DEBUG] handle message send sgipMsgHead is SGIPMsgHead [messageLength=172, commandId=3, sourceNodeNumber=3073190214, commandGenerateDate=308171303, commandNumber=2] submit detail:Submit [spNumber=10655502130, chargeNumber=8618658191488, userCount=1, listUserNumber=[8618658191488], corpId=90214, serviceType=WDM211, feeType=1, feeValue=0, givenValue=, agentFlag=0, morelatetoMTFlag=0, priority=0, expireTime=, scheduleTime=, reportFlag=1, tpPid=0, tpUdhi=0, messageCoding=8, messageType=0, messageLength=8, messageContent=222, reserve=]
+2018-03-08 17:26:12 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=211.94.164.35:8804
+2018-03-08 17:26:12 [com.core.sgip.interf.DefaultMessageHandler]-[DEBUG] handle message send sgipMsgHead is SGIPMsgHead [messageLength=172, commandId=3, sourceNodeNumber=3073190214, commandGenerateDate=308172612, commandNumber=2] submit detail:Submit [spNumber=10655502130, chargeNumber=8618658191488, userCount=1, listUserNumber=[8618658191488], corpId=90214, serviceType=WDM211, feeType=1, feeValue=0, givenValue=, agentFlag=0, morelatetoMTFlag=0, priority=0, expireTime=, scheduleTime=, reportFlag=1, tpPid=0, tpUdhi=0, messageCoding=8, messageType=0, messageLength=8, messageContent=222, reserve=]
+2018-03-08 17:58:57 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=211.94.164.35:8804
+2018-03-08 17:58:57 [com.core.sgip.interf.DefaultMessageHandler]-[DEBUG] handle message send sgipMsgHead is SGIPMsgHead [messageLength=172, commandId=3, sourceNodeNumber=3073190214, commandGenerateDate=308175857, commandNumber=2] submit detail:Submit [spNumber=10655502130, chargeNumber=8618658191488, userCount=1, listUserNumber=[8618658191488], corpId=90214, serviceType=WDM211, feeType=1, feeValue=0, givenValue=, agentFlag=0, morelatetoMTFlag=0, priority=0, expireTime=, scheduleTime=, reportFlag=1, tpPid=0, tpUdhi=0, messageCoding=8, messageType=0, messageLength=8, messageContent=222, reserve=]
+2018-03-08 17:59:42 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=211.94.164.35:8804
+2018-03-08 17:59:42 [com.core.sgip.interf.DefaultMessageHandler]-[DEBUG] handle message send sgipMsgHead is SGIPMsgHead [messageLength=172, commandId=3, sourceNodeNumber=3073190214, commandGenerateDate=308175942, commandNumber=2] submit detail:Submit [spNumber=10655502130, chargeNumber=8618658191488, userCount=1, listUserNumber=[8618658191488], corpId=90214, serviceType=WDM211, feeType=1, feeValue=0, givenValue=, agentFlag=0, morelatetoMTFlag=0, priority=0, expireTime=, scheduleTime=, reportFlag=1, tpPid=0, tpUdhi=0, messageCoding=8, messageType=0, messageLength=8, messageContent=222, reserve=]
+2018-03-08 18:00:16 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=211.94.164.35:8804
+2018-03-08 18:00:17 [com.core.sgip.interf.DefaultMessageHandler]-[DEBUG] handle message send sgipMsgHead is SGIPMsgHead [messageLength=172, commandId=3, sourceNodeNumber=3073190214, commandGenerateDate=308180017, commandNumber=2] submit detail:Submit [spNumber=10655502130, chargeNumber=8618658191488, userCount=1, listUserNumber=[8618658191488], corpId=90214, serviceType=WDM211, feeType=1, feeValue=0, givenValue=, agentFlag=0, morelatetoMTFlag=0, priority=0, expireTime=, scheduleTime=, reportFlag=1, tpPid=0, tpUdhi=0, messageCoding=8, messageType=0, messageLength=8, messageContent=222, reserve=]
+2018-03-08 18:03:11 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=211.94.164.35:8804
+2018-03-08 18:03:11 [com.core.sgip.interf.DefaultMessageHandler]-[DEBUG] handle message send sgipMsgHead is SGIPMsgHead [messageLength=172, commandId=3, sourceNodeNumber=3073190214, commandGenerateDate=308180311, commandNumber=2] submit detail:Submit [spNumber=10655502130, chargeNumber=8618658191488, userCount=1, listUserNumber=[8618658191488], corpId=90214, serviceType=WDM211, feeType=1, feeValue=0, givenValue=, agentFlag=0, morelatetoMTFlag=0, priority=0, expireTime=, scheduleTime=, reportFlag=1, tpPid=0, tpUdhi=0, messageCoding=8, messageType=0, messageLength=8, messageContent=222, reserve=]
+2018-03-08 18:03:56 [com.core.sgip.client.SGIPClient]-[DEBUG] *********start build socket=211.94.164.35:8804
+2018-03-08 18:03:56 [com.core.sgip.interf.DefaultMessageHandler]-[DEBUG] handle message send sgipMsgHead is SGIPMsgHead [messageLength=172, commandId=3, sourceNodeNumber=3073190214, commandGenerateDate=308180356, commandNumber=2] submit detail:Submit [spNumber=10655502130, chargeNumber=8618658191488, userCount=1, listUserNumber=[8618658191488], corpId=90214, serviceType=WDM211, feeType=1, feeValue=0, givenValue=, agentFlag=0, morelatetoMTFlag=0, priority=0, expireTime=, scheduleTime=, reportFlag=1, tpPid=0, tpUdhi=0, messageCoding=8, messageType=0, messageLength=8, messageContent=222, reserve=]

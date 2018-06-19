@@ -1,0 +1,147 @@
+	  
+  
+							
+		
+        
+            	<div class="panel panel-default">
+                <div class="panel-heading"><a asynchronize="true" onclick="javascript:ws.get(this,'')" href="#" link="$!{urlTools.tr('/admin/game/home')}"> 游戏列表 </a>/<a asynchronize="true" onclick="javascript:ws.get(this,'')" href="#" link="$!{urlTools.tr('/admin/game/view?id=$!{game.id}')}">$!{game.name}</a></div>                	
+                <div class="panel-body">
+                <div class="row">
+                          <div class="col-md-3">
+                				<a href="#" class="thumbnail">
+    								<img src="$!{game.img}" alt="">
+        						</a>
+            					  <!--
+            			            <div>
+            						<img src="/manage/static/image/lunbo1.jpg" alt="..." class="img-thumbnail" style="width:30px;height:30px">
+            						<img src="/manage/static/image/lunbo1.jpg" alt="..." class="img-thumbnail" style="width:30px;height:30px">
+            						<img src="/manage/static/image/lunbo1.jpg" alt="..." class="img-thumbnail" style="width:30px;height:30px">
+            						<a class="btn btn-sm" id="ImageUrlBtn"><img src="" alt="  +" class="img-thumbnail" style="width:30px;height:30px"></a>
+            						</div>
+            						-->
+            			  </div>
+                         
+                          <div class="col-md-8">
+            				    
+            				<p class="text-left text-primary">
+            					漫画：&nbsp;&nbsp;<span style="color:red">$!{game.bookTitle}
+                                </span>
+            				</p>
+            				<p class="text-left ">
+            					时间地区：&nbsp;&nbsp;<span style="color:red"> &nbsp;&nbsp;$!{book.addTime} &nbsp;&nbsp;| &nbsp;&nbsp;$!{book.country} 
+                                </span>
+            				</p>
+            				<p class="text-left ">
+            					作者：&nbsp;&nbsp;<span class="text-primary" >$!{book.author.name}
+                                </span>
+            				</p>
+            				<p class="text-left ">
+            					类型：&nbsp;&nbsp;<span class="text-primary" id="bookTypeSpan">					
+                                #foreach(${item} in $!{book.booktypes})					
+            						$!{item.name}&nbsp;|						
+            					#end
+                                </span>
+            					&nbsp;&nbsp;<a onclick="initType()" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#myModal">
+                                                   新加入</a>
+            				</p>
+            				
+            				<p class="text-left ">
+            					主题 /标签：&nbsp;&nbsp;<span class="text-primary" >$!{book.theme} &nbsp;&nbsp;/&nbsp;&nbsp;$!{book.bookTags}
+                                </span>
+            				</p>
+            				
+            				<p class="text-left ">
+            					是否单本 / 连载Or完结 ：&nbsp;&nbsp;
+            					<span class="text-primary" >
+            						#if($!{book.getOffPrint()}==1)
+            							 是
+            							 #else
+            								否
+            						#end
+            						&nbsp;&nbsp; /
+            						&nbsp;&nbsp;
+            						#if($!{book.getSerialize()}==1)
+            							连载
+            							#else
+            								完结
+            								#end
+                                </span>
+            				</p>
+            				
+            				<p class="text-left ">
+            					搜索标志 / 翻页方式 ：&nbsp;&nbsp;
+            					<span class="text-primary" >
+            						#if($!{book.searchFlag}==1)
+            							 是
+            							 #else
+            								否
+            						#end
+            						&nbsp;&nbsp; /
+            						&nbsp;&nbsp;
+            						#if($!{book.pageDirection}==1)
+            							左翻
+            							#else
+            								右翻
+            								#end
+                                </span>
+            				</p>
+            				
+            				<p class="text-left ">
+            					独家 / 原版标志：&nbsp;&nbsp;<span class="text-primary" >&nbsp;&nbsp;
+            						#if($!{book.exclusiveFlag}==1)
+            							是
+            							#else
+            								否
+            						#end
+            						&nbsp;&nbsp;/&nbsp;&nbsp;
+            						#if($!{book.officialFlag}==1)
+            							原版
+            							#elseif($!{book.officialFlag}==2)
+            								官方译本
+            								#else
+            									其他译本
+            									#end
+                                </span>
+            				</p>
+            				<p class="text-left ">
+            					是否使用 ：&nbsp;&nbsp;
+            					<span class="text-primary" >
+            						#if($!{book.status}==1)
+            							使用
+            							 #else
+            								未使用
+            						#end
+            						&nbsp;&nbsp;&nbsp;
+            						#if($!{book.status}==1)
+            							<a type="button" class="btn btn-danger btn-sm" href="/manage/book/used?id=$!{book.id}&status=0">不使用</a>
+            							#else
+            							<a type="button" class="btn btn-primary btn-sm" href="/manage/book/used?id=$!{book.id}&status=1">使用</a>
+            							#end
+                                </span>
+            				</p>
+            				<p class="text-left ">
+            					简介：&nbsp;&nbsp;<span >$!{book.briefIntro}
+                                </span>
+            				</p>
+            			
+            				
+            				
+            				<p class="text-left ">
+            				<a href="/manage/book/pic/list?bookId=$!{book.id}" class="btn btn-primary btn-sm" >
+								图片管理
+                            </a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/manage/book/part/list?bookId=$!{book.id}" class="btn btn-primary btn-sm" >
+								章节管理
+                            </a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/manage/book/edcomment/list?bookId=$!{book.id}" class="btn btn-primary btn-sm" >
+            					编辑评论                  
+                            </a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/manage/book/types?id=$!{book.id}" class="btn btn-primary btn-sm" >
+            					 分类管理                 
+                            </a>
+            				</p>
+            			  </div>
+                        </div>
+					</div>
+                </div>
+                		   
+			   
+			
+

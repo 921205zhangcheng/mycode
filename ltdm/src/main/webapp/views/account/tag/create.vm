@@ -1,0 +1,112 @@
+
+
+<SCRIPT >
+$('#appCreate').submit(function() {
+    jQuery.ajax({
+    url:"$!{urlTools.tr('/tag/create')}",
+    data:$('#appCreate').serialize(),
+    type:"POST",  
+    success:function(data)
+    {
+        　		$("#container_iframe").html(data); 
+    }
+    });
+    return false;
+});
+
+/*
+KindEditor.ready(function (K) {
+             var editor = K.editor({
+                allowFileManager: false,
+                fileManagerJson: "$!{urlTools.ts('/ke/filelist')}",
+                uploadJson: "$!{urlTools.ts('/ke/upload')}",
+                urlType: 'domain',
+                
+            });	
+			
+			K('#ImageUrlBtn').click(function() {
+				editor.loadPlugin('image', function() {
+					editor.plugin.imageDialog({						
+						imageUrl :  K('#ImageUrlImg').attr('src'),
+						clickFn : function(url, title, width, height, border, align) {
+				            alert(url);
+							K('#ImageUrlImg').attr('src',url );								 
+							K('#picUrl').val(url);							 
+							editor.hideDialog();
+						}
+					});
+				});
+			});
+		});		
+		*/
+</SCRIPT>
+<script>
+			$(function() {
+			
+					$.getScript("$!{urlTools.ts('/kindeditor/kindeditor.js')}", function() {
+					
+						//KindEditor.create('textarea[name="content"]');						
+						var editor = KindEditor.editor({
+                        allowFileManager: false,
+                        fileManagerJson: "$!{urlTools.tr('/ke/filelist')}",
+                		uploadJson: "$!{urlTools.tr('/ke/upload')}",
+                        urlType: 'domain',
+                        
+                    });	
+			
+					KindEditor('#ImageUrlBtn').click(function() {
+        				editor.loadPlugin('image', function() {
+        					editor.plugin.imageDialog({						
+        						imageUrl :  KindEditor('#ImageUrlImg').attr('src'),
+        						clickFn : function(url, title, width, height, border, align) {
+        				            alert(url);
+        							KindEditor('#ImageUrlImg').attr('src',url );								 
+        							$('#appLogo').val(url);							 
+        							editor.hideDialog();
+        						}
+        					});
+        				});
+        			});	
+					});
+					
+				
+			});
+		</script>
+
+
+
+<div class="panel panel-default">
+<div class="panel-heading"><a href="#" onclick="ws.callback()" type="button" class=" pull-right">
+	<span class="glyphicon glyphicon-fast-backward"  aria-hidden="true"></span> 返回列表
+</a>创建词条</div>
+	
+  <div class="panel-body">
+	
+        <form class="form-horizontal" id="appCreate" action="" >
+			
+          <div class="form-group has-success has-feedback">            
+            <label class="control-label col-sm-2" for="name">应用名称</label>
+            <div class="col-sm-4">
+            	<div class="input-group">
+                <span class="input-group-addon">*</span>
+                <input type="text" class="form-control" name="name" value="" id="name" aria-describedby="nameStatus">
+              </div>
+              
+              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+              <span id="weixinNameStatus" class="sr-only">(success)</span>
+            </div>
+          </div>	  
+			<!-- 
+		 <textarea name="content" style="width:700px;height:200px;visibility:hidden;">KindEditor</textarea>
+		 -->
+		 <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit"  class="btn btn-success">保存</button>
+            </div>
+          </div>
+        </form>
+  </div>
+  
+  <div class="panel-footer"></div>
+</div>
+

@@ -1,0 +1,28 @@
+
+<div class="panel panel-default">
+<div class="panel-heading">	
+创建词条
+	<a href="#" onclick="ws.callback()" type="button" class=" pull-right">
+	<span class="glyphicon glyphicon-fast-backward"  aria-hidden="true"></span> 返回列表
+</a></div>
+	
+  <div class="panel-body">
+		#if($!{rdata.rcode}=="1")
+			<div class='alert alert-success fade in ' style="width:160px;">
+			<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+			<strong>$!{rdata.message}</strong></div>	
+			#else
+				<div class='alert alert-danger fade in' style="width:160px;">
+					<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+					<strong>$!{rdata.message}</strong></div>	
+		#end
+		
+    <a href="#" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/tag/create')}" >
+    	 继续添加
+    </a>
+	
+  </div>  
+  <div class="panel-footer"></div>
+  
+</div>
+

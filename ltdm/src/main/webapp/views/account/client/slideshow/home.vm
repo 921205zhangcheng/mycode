@@ -1,0 +1,97 @@
+	  
+  
+<div class="panel panel-default">
+<div class="panel-heading">轮播组管理</div>
+	
+  <div class="panel-body">
+	
+	
+		
+		<div class="highlight">
+		
+           
+							
+				
+			<div id="search_view">
+				
+		
+		<div id="second_view">
+        
+            	<div class="panel panel-default">
+                <div class="panel-heading">轮播组列表</div>                	
+                  <div class="panel-body">
+                <table class="table table-bordered">
+					
+                	 <tr>
+                		<td>ID</td>
+                		<td>轮播类型</td>                		
+						<td>轮播场景</td> 
+                		<td>字幕icon</td>  
+						<td>操作</td> 
+                     </tr>
+					 
+                        	#foreach($item in $!{context.list})
+                        		 <tr>
+                        			<td>$!{item.id}</td>
+									
+                        			<td>
+										#if($!{item.type}==1)
+											图片
+											#else
+												文字
+												#end
+										
+									</td>
+									<td>
+										#if($!{item.scene}==1)
+											首页
+											#elseif($!{item.type}==2)
+												最热
+												#elseif($!{item.type}==3)
+													最新
+											        #end
+									</td> 
+                        			
+									<td>	#if($!{item.type}==2)
+												<img  src="$!{item.icon}" style="width:40px;height: 40px;"/>
+												#end
+                						
+											
+                						
+                					</td>
+                					 
+                					<td>             						
+                						<div class="btn-group" role="group" aria-label="...">
+											<a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/client/slideshow/view?pageIndex=')}$!{context.pageIndex}&id=$!{item.id}" class="btn btn-xs btn-info">详情</a>
+                                          <a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/client/slideshow/update?pageIndex=')}$!{context.pageIndex}&id=$!{item.id}" class="btn btn-xs btn-success">修改</a>
+										
+                						  &nbsp;&nbsp;
+                                          <a type="button" onclick="javascript:ws.delback(this,'')" link="$!{urlTools.tr('/client/slideshow/delete?pageIndex=')}$!{context.pageIndex}&id=$!{item.id}" class="btn btn-xs btn-danger">删除 </a>                             
+                                        </div>
+                						
+                					</td>
+                                    
+                                 </tr>
+                        	#end
+                    </table>
+                		<div id="pageNav">
+                				<div class=" pull-left pagination">
+                					<a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/client/slideshow/create')}" class="btn btn-sm btn-primary">新建轮播组</a>
+                				</div>
+                				
+                				#parse("/layout/pagenav.vm")
+								
+                           </div>
+                		   
+                </div>
+                </div>
+                		   
+			   
+			   		</div>
+		</div>
+ 
+		</div>
+
+
+	</div>
+</div>	

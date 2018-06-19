@@ -1,0 +1,70 @@
+	  
+  
+<div class="panel panel-default">
+<div class="panel-heading">APP管理</div>
+	
+  <div class="panel-body">
+	
+	
+		
+		<div class="highlight">
+			
+           
+							
+				
+				<div id="search_view">
+				 
+			
+		<div id="second_view">
+        
+            	<div class="panel panel-default">
+                <div class="panel-heading"><a asynchronize="true"  href="#" > APP列表 </a></div>                	
+                  <div class="panel-body">
+                <table class="table table-bordered">
+					
+                	 <tr>
+                		<td>ID</td>
+                		<td>APP名称</td>
+                                		
+                		<td>图片logo</td>
+                		<td>操作</td>                        
+                     </tr>
+					 
+                        	#foreach($item in $!{context.list})
+                        		 <tr>
+                        			<td>$!{item.id}</td>
+                        			<td>$!{item.appName}</td>                					
+                								
+                        			<td><img  src="$!{item.appLogo}" style="width:40px;height: 40px;"/></td>
+                					
+                					<td>             						
+                						<div class="btn-group" role="group" aria-label="...">
+                                          <a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/application/update?pageIndex=')}$!{context.pageIndex}&id=$!{item.id}" class="btn btn-xs btn-success">修改</a>
+                						  &nbsp;&nbsp;
+                                          <a type="button" onclick="javascript:ws.delback(this,'')" link="$!{urlTools.tr('/application/delete?pageIndex=')}$!{context.pageIndex}&id=$!{item.id}" class="btn btn-xs btn-danger">删除 </a>                             
+                                        </div>
+                						
+                					</td>
+                                    
+                                 </tr>
+                        	#end
+                    </table>
+                		<div id="pageNav">
+                				<div class=" pull-left pagination">
+                					<a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/application/create')}" class="btn btn-sm btn-primary">新建项目</a>
+                				</div>
+                				
+                				#parse("/layout/pagenav.vm")
+								
+                           </div>
+                		   
+                </div>
+                </div>
+                		   
+			   
+			   </div>
+ 
+				</div>
+			</div>		
+	</div>
+</div>

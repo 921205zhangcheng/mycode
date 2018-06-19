@@ -1,0 +1,48 @@
+ <ul  id="main-nav" class="main-nav nav nav-tabs nav-stacked" style="">
+            <li>
+                <a href="./Bootstrap_left_menu.html2_files/Bootstrap_left_menu.html2.html#baseSetting" class="nav-header collapsed" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-cog"></i>
+		流量卡充值管理
+                    
+                    <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+			
+                </a>
+                  <ul name="left_slide" id="baseSetting" class="nav nav-list secondmenu collapse" style="height: 0px;">
+                    <li asynchronize="true"><a asynchronize="true" onclick="javascript:ws.post(this,'',true)" href="#" link="$!{urlTools.tr('/game/home')}" ><i class="glyphicon glyphicon-user"></i> 流量卡充值</a></li>
+                    <li><a asynchronize="true" href="#" onclick="javascript:ws.post(this,'',true)" link="$!{urlTools.tr('/game/rest')}" ><i class="glyphicon glyphicon-th-list"></i>账户查询余额</a></li>
+                    <li><a asynchronize="true" href="#" onclick="javascript:ws.post(this,'',true)" link="$!{urlTools.tr('/game/comment/home')}" ><i class="glyphicon glyphicon-asterisk"></i>交易查询</a></li>
+                    <li><a asynchronize="true" href="#" onclick="javascript:ws.post(this,'',true)" link="./weixin/list" ><i class="glyphicon glyphicon-edit"></i>产品查询</a></li>
+                </ul>
+            </li>
+			
+            <li>
+                <a href="http://static.demo.ruyo.net/Bootstrap_left_menu.html2.html#disSetting" class="nav-header collapsed" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-globe"></i>
+		分发配置
+<span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                </a>
+                <ul name="left_slide" id="disSetting" class="nav nav-list secondmenu collapse ">
+                    <li><a asynchronize="true" href="#" link="./weixin/list"><i class="glyphicon glyphicon-th-list"></i>&nbsp;分发包配置</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="http://static.demo.ruyo.net/Bootstrap_left_menu.html2.html#dicSetting" class="nav-header collapsed" data-toggle="collapse">
+                    <i class="glyphicon glyphicon-bold"></i>
+		字典配置
+                    <span class="pull-right glyphicon glyphicon-chevron-toggle"></span>
+                </a>
+                <ul name="left_slide" id="dicSetting" class="nav nav-list secondmenu collapse ">
+                    <li><a asynchronize="true" href="#" link="./weixin/list"><i class="glyphicon glyphicon-text-width"></i>&nbsp;关键字配置</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="./Bootstrap_left_menu.html2_files/Bootstrap_left_menu.html2.html">
+                    <i class="glyphicon glyphicon-fire"></i>
+		关于系统
+                    <span class="badge pull-right">1</span>
+                </a>
+            </li>
+
+        </ul>
+        

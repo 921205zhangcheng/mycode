@@ -1,0 +1,74 @@
+	  
+  
+<div class="panel panel-default">
+<div class="panel-heading">评价管理</div>
+	
+  <div class="panel-body">
+	
+	
+		
+<div class="highlight">
+	<div id="search_view">
+		
+           
+		
+		<div id="second_view">
+        
+            	<div class="panel panel-default">
+                <div class="panel-heading">评价列表</div>                	
+                  <div class="panel-body">
+                <table class="table table-bordered">
+					
+                	 <tr>
+                		<td>ID</td>
+                		<td>评价内容</td>
+                		
+                		<td>创建时间</td>
+                		<td>操作</td>                        
+                     </tr>
+					 
+                        	#foreach($item in $!{context.list})
+                        		 <tr>
+                        			<td>$!{item.id}</td>
+                        			<td>$!{item.content}</td>
+                        			<td>
+                						<!-- 
+                						$!date.format('yyyy-MM-dd HH:mm:ss',$!{item.createTime})	
+                						-->
+										
+										$!{item.createTime}
+										
+                					</td>
+                					
+                					<td>             						
+                						<div class="btn-group" role="group" aria-label="...">
+                                          <a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/game/comment/update?pageIndex=')}$!{context.pageIndex}&id=$!{item.id}" class="btn btn-xs btn-success">修改</a>
+                						  &nbsp;&nbsp;
+                                          <a type="button" onclick="javascript:ws.delback(this,'')" link="$!{urlTools.tr('/game/comment/delete?pageIndex=')}$!{context.pageIndex}&id=$!{item.id}" class="btn btn-xs btn-danger">删除 </a>                             
+                                        </div>
+                						
+                					</td>
+                                    
+                                 </tr>
+                        	#end
+                    </table>
+                		<div id="pageNav">
+                				<div class=" pull-left pagination">
+                					<a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/game/comment/create')}" class="btn btn-sm btn-primary">新建评价</a>
+                				</div>
+                				
+                				#parse("/layout/pagenav.vm")
+								
+                           </div>
+                		   
+                </div>
+                </div>
+                		   
+			   
+			   
+ 
+		</div>
+			</div>
+		</div>
+	</div>
+</div>	

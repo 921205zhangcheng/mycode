@@ -1,0 +1,46 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">流量充值</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+			
+ 
+			
+			#if($!{wxsqUser.level}== 0)
+    			<li role="presentation" class="dropdown open">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="true">
+    					开发项 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">服务管理</a></li>
+                      <li><a href="#">添加服务</a></li>
+                    </ul> 
+                </li>	
+		   #end
+           </ul>
+          <ul class="nav navbar-nav navbar-right" id="admin_view">
+				#if($!{admin})
+					<li><a href="#"> 				
+							<span class="glyphicon glyphicon-user" aria-hidden="true">$!{admin.name}</span>			
+					</a>
+					</li>								  
+			   #end
+			   
+		  </ul>
+        </div>
+      </div>
+    </nav>
+	
+	 <div class="container marketing">
+		<div class="pull-right" style="width:160p; position: absolute;right: 80px;top: 80px;"  id="alert_view">
+		</div>
+     </div>
+      

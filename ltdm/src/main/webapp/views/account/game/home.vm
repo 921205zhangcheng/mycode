@@ -1,0 +1,83 @@
+
+  
+<div class="panel panel-default">
+<div class="panel-heading">流量卡充值</div>
+	
+  <div class="panel-body">
+	
+	
+		
+	<div class="highlight">
+							
+				<div class="row">	
+					
+					<div class="col-md-8">
+						
+    					
+							
+					</div>
+					<div class="col-md-4 pull-right">
+						
+						
+						
+					</div>
+															
+				</div>
+			<div id = "search_view">	
+				 <div class="thumbnail">
+        				<dl class="dl-horizontal ">
+                     <form class="form-inline" id="gamesearch" role="form" onsubmit="return false" method="post">
+							
+                          <div class="form-group">
+                            <label class="sr-only control-label" for="forvalue">充值</label>
+                            <input type="text" id="phone" sign="$!{sign}" url ="$!{urlTools.tr('/game/recharge')}" upalias="" opgroup="AND" alias="game" group="1" name="phone"  operate="LIKE"   placeholder="手机号码">
+						    <input type="text" id="productid" sign="$!{sign}" url ="$!{urlTools.tr('/game/recharge')}" upalias="" opgroup="AND" alias="game" group="1" name="productid"  operate="LIKE"   placeholder="产品编号">
+                          </div>						  
+                          <button type="button"  url ="$!{urlTools.tr('/game/recharge')}" onclick="javascript:ws.search(this,'$!{sign}','#gamesearch');" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>充值</button>
+                        </form>	
+							<br />				
+                          </dl>
+        			 </div>
+			    
+		
+		<div id="second_view">
+        
+            	<div class="panel panel-default">
+                <div class="panel-heading"><a asynchronize="true"  href="#" > 可充值产品列表</a></div>                	
+                <div class="panel-body">
+                <table class="table table-bordered">
+					
+                	 <tr>
+                		<td>ID</td>
+                		<td>产品名称</td>
+                		<td>运营商</td>
+                		<td>金额</td>
+                		
+						
+                     </tr>
+					 
+                        	#foreach($item in $!{context.list})
+                        		 <tr>
+                        			<td>$!{item.peta_rn}</td>
+                        			<td>$!{item.productclassname}</td>
+									<td>$!{item.modelname}</td>
+									<td>$!{item.productspecname}</td>                               
+                                 </tr>
+                        	#end
+                    </table>        				
+                				#parse("/layout/pagenav.vm")
+								
+                           </div>
+                		   
+                </div>
+                </div>
+                		   
+			   
+			  
+		</div>
+		
+			</div>
+       </div>
+	</div>
+</div>
+                          

@@ -1,0 +1,81 @@
+	  
+  
+<div class="panel panel-default">
+<div class="panel-heading"> 分类管理</div>
+	
+  <div class="panel-body">
+	
+	
+		
+		<div class="highlight">
+		
+           
+							
+			
+<div id="search_view">
+				
+		
+		<div id="second_view">
+        
+            	<div class="panel panel-default">
+                <div class="panel-heading">分类列表</div>                	
+                  <div class="panel-body">
+                <table class="table table-bordered">
+					
+                	 <tr>
+                		<td>ID</td>
+                		<td>分类名称</td>                		
+                		<td>词条</td>
+                		<td>操作</td>                        
+                     </tr>
+					 
+                        	#foreach($item in $!{context.list})
+                        		 <tr>
+                        			<td>$!{item.id}</td>
+                        			<td>$!{item.name}</td>
+                        			<td>
+                						
+                						#foreach($tag in $!{item.getTags()})
+											$!{tag.name}&nbsp;
+											#end
+                						
+                					</td>
+                					
+                					<td>     
+										<div class="btn-group" role="group" aria-label="...">
+										 <a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/game/type/view?id=')}$!{item.id}"  class="btn btn-xs btn-primary">详情</a>
+                						  &nbsp;
+                                          <a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/game/type/update?id=')}$!{item.id}"  class="btn btn-xs btn-success">修改</a>
+                						  &nbsp;
+                                          <a type="button" onclick="javascript:ws.delback(this,'')" link="$!{urlTools.tr('/game/type/delete?id=')}$!{item.id}"  class="btn btn-xs btn-danger">删除 </a>                             
+                                        </div>
+										
+                						
+                                     
+                						
+                					</td>
+                                    
+                                 </tr>
+                        	#end
+                    </table>
+                		<div id="pageNav">
+                				<div class=" pull-left pagination">
+                					<a type="button" onclick="javascript:ws.get(this,'')" link="$!{urlTools.tr('/game/type/create')}" class="btn btn-sm btn-primary">新建分类</a>
+                				</div>
+                				
+                				#parse("/layout/pagenav.vm")
+								
+                           </div>
+                		   
+                </div>
+                </div>
+                		   
+			   
+			   		</div>
+		</div>
+ 
+		</div>
+
+
+	</div>
+</div>	

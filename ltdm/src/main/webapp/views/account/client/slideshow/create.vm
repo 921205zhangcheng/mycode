@@ -1,0 +1,131 @@
+
+
+<SCRIPT >
+$('#slideshowCreate').submit(function() {
+    jQuery.ajax({
+    url:"$!{urlTools.tr('/client/slideshow/create')}",
+    data:$('#slideshowCreate').serialize(),
+    type:"POST",  
+    success:function(data)
+    {
+        　		$("#container_iframe").html(data); 
+    }
+    });
+    return false;
+});
+
+
+</SCRIPT>
+
+<script>
+			$(function() {
+			
+					$.getScript("$!{urlTools.ts('/kindeditor/kindeditor.js')}", function() {
+					
+						//KindEditor.create('textarea[name="content"]');
+						KindEditor.basePath = "$!{urlTools.ts('/kindeditor/')}";
+						KindEditor.pluginsPath = "$!{urlTools.ts('/kindeditor/plugins/')}";
+						var editor = KindEditor.editor({
+                       	allowFileManager: false,
+						allowUpload : true,
+						basePath : "$!{urlTools.ts('/kindeditor/')}",
+					pluginsPath : "$!{urlTools.ts('/kindeditor/plugins/')}",
+                        fileManagerJson: "$!{urlTools.tr('/ke/filelist')}",
+                		uploadJson: "$!{urlTools.tr('/ke/upload')}",
+                        urlType: 'domain',
+                        
+                        });	
+    			
+    					
+						
+						KindEditor('#IconUrlBtn').click(function() {
+            				editor.loadPlugin('image', function() {
+            					editor.plugin.imageDialog({						
+            						imageUrl :  KindEditor('#IconUrlImg').attr('src'),
+            						clickFn : function(url, title, width, height, border, align) {
+            				            
+            							KindEditor('#IconUrlImg').attr('src',url );								 
+            							$('#icon').val(url);							 
+            							editor.hideDialog();
+            						}
+            					});
+            				});
+            			});	
+					});
+					
+					$.getScript("$!{urlTools.ts('/kindeditor/lang/zh_CN.js')}", function() {
+			
+					});	
+			});
+		</script>
+
+<div class="panel panel-default">
+<div class="panel-heading"><a href="#" onclick="ws.callback()" type="button" class=" pull-right">
+	<span class="glyphicon glyphicon-fast-backward"  aria-hidden="true"></span> 返回列表
+</a>创建轮播组</div>
+	
+  <div class="panel-body">
+	
+        <form class="form-horizontal" id="slideshowCreate" action="" >
+			
+			<div class="form-group">
+                <label for="inputgameName" class="col-sm-2 control-label"> 轮播组名称</label>
+                <div class="col-sm-10">
+                  <input type="text"  class="form-control" name="name" id="inputgameName" placeholder=" 可以不填">
+                </div>
+              </div>
+			  
+			<div class="form-group">				
+              <label for="forlinkEmail" class="col-sm-2 control-label">轮播类型<span id="forlinkEmail" style="color:red"> </span></label>		 
+			  <label class="radio-inline">
+                <input type="radio" name="type" id="type1" value="1" >
+					图片
+              </label >
+              <label class="radio-inline">
+                <input type="radio" name="type" id="type2" value="2" >
+					文字
+              </label>                        
+             </div>
+			 
+			 <div class="form-group">				
+              <label for="forlinkEmail" class="col-sm-2 control-label">展示场景<span id="forlinkEmail" style="color:red"> </span></label>		 
+			  <label class="radio-inline">
+                <input type="radio" name="scene" id="scene1" value="1" >
+					首页
+              </label >
+              <label class="radio-inline">
+                <input type="radio" name="scene" id="scene2" value="2" >
+					最热
+              </label>         
+			  
+			  <label class="radio-inline">
+                <input type="radio" name="scene" id="scene3" value="3" >
+					最新
+              </label>   
+             </div>
+		   		
+         	  
+		  
+		  <div class="form-group">
+              <label for="forbriefIntro" class="col-sm-2 control-label">icon图片</label>
+			  <div class="col-sm-10">
+              	<button type="button" class="btn btn-mini" id="IconUrlBtn">选择图片
+                </button>
+                <br>
+                <img id="IconUrlImg" name="IconUrlImg" src="" style="width:96px;height: 124px;"/>
+                <input type="hidden" name="icon" id="icon" value = "">					
+				<span class="help-inline">建议图片大小为:124x96</span>
+			   </div>
+            </div> 
+			
+		 <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit"  class="btn btn-success">保存</button>
+            </div>
+          </div>
+        </form>
+  </div>
+  
+  <div class="panel-footer"></div>
+</div>
+

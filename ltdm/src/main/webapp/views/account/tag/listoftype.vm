@@ -1,0 +1,26 @@
+ <p    style="display:inline-block">  
+						词条:
+                     </p> 
+					
+        			#foreach($tag in $!{type.getTags()})
+        				                       
+						       <p   class="text-success" style="display:inline-block">                       
+        						$!{tag.name}
+        						<br >
+        							<a href="#" link="$!{urlTools.tr('/game/typetag/delete?gameTypeId=')}$!{type.id}&tagId=$!{tag.id}" onclick="ws.post(this,'type_tag_view')" class="btn btn-xs btn-danger " role="button">删除</a>
+        					
+								
+                          		</p>
+                
+						   				
+					#end
+				
+					 &nbsp;&nbsp;  
+						<p   class="text-success" style="display:inline-block">                       
+        						
+        						<br >
+									<a onclick="initTag()" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#tagModel">
+										添加</a> 
+								
+                          </p>
+              

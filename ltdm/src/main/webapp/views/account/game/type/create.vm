@@ -1,0 +1,54 @@
+
+
+<SCRIPT >
+$('#typeCreate').submit(function() {
+    jQuery.ajax({
+    url:"$!{urlTools.tr('/game/type/create')}",
+    data:$('#typeCreate').serialize(),
+    type:"POST",  
+    success:function(data)
+    {
+        　		$("#container_iframe").html(data); 
+    }
+    });
+    return false;
+});
+
+
+</SCRIPT>
+
+<div class="panel panel-default">
+<div class="panel-heading"><a href="#" onclick="ws.callback()" type="button" class="pull-right">
+	<span class="glyphicon glyphicon-fast-backward"  aria-hidden="true"></span> 返回列表
+</a>创建分类</div>
+	
+  <div class="panel-body">
+	
+        <form class="form-horizontal" id="typeCreate"  >
+			
+          <div class="form-group has-success has-feedback">            
+            <label class="control-label col-sm-2" >分类名称</label>
+            <div class="col-sm-4">
+            	<div class="input-group">
+                <span class="input-group-addon">*</span>
+                <input type="text" class="form-control" name="name"  value =""  aria-describedby="nameStatus">
+              </div>
+              
+              <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+              <span id="weixinNameStatus" class="sr-only">(success)</span>
+            </div>
+          </div>	  
+			<!-- 
+		 <textarea name="content" style="width:700px;height:200px;visibility:hidden;">KindEditor</textarea>
+		 -->
+		 <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit"  class="btn btn-success">保存</button>
+            </div>
+          </div>
+        </form>
+  </div>
+  
+  <div class="panel-footer"></div>
+</div>
+

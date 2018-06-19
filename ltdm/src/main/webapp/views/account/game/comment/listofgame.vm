@@ -1,0 +1,17 @@
+#foreach($ref in $!{game.commentRefs})
+			
+   <p   class="text-primary bg-info" style="display:inline-block;border:1px solid #CCC; margin-left:20px">                       
+			<a href="#" class="btn btn-xs btn-success " role="button">$!{ref.count}</a>
+			$!{ref.pk.comment.content}					
+				<a href="#" onclick="initcommentupdate('$!{game.id}','$!{ref.pk.comment.id}')" class="btn btn-xs btn-info " data-toggle="modal" data-target="#commentUpdateModel" role="button">修改</a> 
+        		<a href="#" link="$!{urlTools.tr('/game/comment/ref/delete?gameId=')}$!{game.id}&commentId=$!{ref.pk.comment.id}" onclick="ws.post(this,'game_comment_view')" class="btn btn-xs btn-danger " role="button">删除</a>
+				 </p>
+
+#end
+ 
+   <p   class="text-primary" style="display:inline-block ">                       
+	<br >
+					<a onclick="initComment()" class="btn btn-primary btn-xs"  data-toggle="modal" data-target="#commentModel">
+			添加</a> 
+	 </p>
+  

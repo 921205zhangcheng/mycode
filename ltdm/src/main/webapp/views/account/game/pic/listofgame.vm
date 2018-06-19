@@ -1,0 +1,26 @@
+#foreach($pic in $!{game.getPics()})
+						
+  <div class="col-sm-2">
+      <img src="$!{pic.picUrl}" alt="" class="img-thumbnail" style="width: 140px; height: 140px;">
+     
+      
+       
+        <p class="text-center">
+			<a href="#"  onclick="initpicupdate('$!{game.id}','$!{pic.id}')" class="btn btn-xs btn-info " data-toggle="modal" data-target="#picUpdateModel" role="button">修改</a>
+			<a href="#" link="$!{urlTools.tr('/game/pic/delete?id=')}$!{pic.id}&gameId=$!{game.id}" onclick="ws.post(this,'game_pic_view')" class="btn btn-xs btn-danger" role="button">删除</a> </p> </p>
+			 </p>
+     
+
+  </div>
+
+#end
+ <div class="col-sm-2">
+      <img src="#" alt="..." class="img-thumbnail" style="width: 140px; height: 140px;">
+     
+      
+  
+        <p class="text-center">
+			<a href="#" onclick="loadEditor()" class="btn btn-xs btn-primary " data-toggle="modal" data-target="#picModel" role="button">添加</a> </p>
+     
+
+  </div>
